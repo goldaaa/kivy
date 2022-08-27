@@ -489,6 +489,8 @@ class MarkupLabel(MarkupLabelBase):
                     script_pos = (lh - wh) / 1.25
                     psp = pph = 0
                 if len(word.text):
+                    if options['text_language'] and "fa" == options['text_language'] or "ar" == options['text_language']:
+                        word.text = word.text[::-1]
                     render_text(word.text, x, y + script_pos)
 
                 # should we record refs ?
