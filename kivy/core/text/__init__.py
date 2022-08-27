@@ -588,7 +588,7 @@ class LabelBase(object):
 
         .. note:: This feature requires the Pango text provider.
         '''
-        return 'ltr'
+        return 'rtl'
 
     def render_lines(self, lines, options, render_text, y, size):
         get_extents = self.get_cached_extents()
@@ -610,6 +610,7 @@ class LabelBase(object):
             if len(layout_line.words):
                 last_word = layout_line.words[0]
                 line = last_word.text
+                if 'fa' == options['text_language'] or 'ar' == options['text_language']: line = last_word.text[::-1]
                 if not cur_base_dir:
                     cur_base_dir = find_base_dir(line)
             x = xpad
